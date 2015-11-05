@@ -32,7 +32,9 @@ public class ImageEditorFrame extends JFrame{
 	}
 
 	
-	public static void main(Stirng[] args) {
+	public static void main(String[] args) {
 		System.out.println("TEST");
+		ImageEditorFrame frame = new ImageEditorFrame ();
+		frame.setTitle ("Maltees Bildeditor");
 	}
 }
