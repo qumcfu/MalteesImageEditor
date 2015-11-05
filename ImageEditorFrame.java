@@ -14,6 +14,7 @@ public class ImageEditorFrame extends JFrame{
 		panel = new ImageEditorPanel ();
 		setDummyImage ();
 		this.add (panel);
+		createMenuBar ();
 
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(400, 300);
@@ -36,8 +37,16 @@ public class ImageEditorFrame extends JFrame{
 	}
 	
 	private void onOpen(){
-		JOptionPane.showMessageDialog(this, "Open Selected");
+	//	JOptionPane.showMessageDialog(this, "Open Selected");
+		try{
+			JFileChooser fileChooser = new JFileChooser(); fileChooser.showOpenDialog(this);
+			File file = fileChooser.getSelectedFile(); BufferedImage image = ImageIO.read(file); panel.setImage(image);
+		} catch(IOException e){
+			JOptionPane.showMessageDialog(this,
+			"Die Datei konnte nicht geöffnet werden");
+		}
 	}
+
 
 	
 	public static void main(String[] args) {
